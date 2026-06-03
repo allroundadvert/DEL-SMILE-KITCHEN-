@@ -51,6 +51,34 @@ header p{
     font-weight:bold;
 }
 
+/* ✅ SLIDER (FIRST TWO IMAGES MOVING LEFT & RIGHT) */
+.slider{
+    width:100%;
+    overflow:hidden;
+}
+
+.slides{
+    display:flex;
+    width:200%;
+    animation:slideMove 6s infinite alternate ease-in-out;
+}
+
+.slides img{
+    width:50%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+@keyframes slideMove{
+    0%{
+        transform:translateX(0%);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+
 /* PRODUCT GALLERY */
 .product-gallery{
     width:100%;
@@ -103,7 +131,6 @@ h2{
     color:var(--gold);
 }
 
-/* INPUTS */
 input, textarea{
     width:100%;
     padding:6px;
@@ -159,11 +186,16 @@ footer{
 <p><strong>Address:</strong> Igbagwe Road, Benin City, Edo State, Nigeria</p>
 </header>
 
-<!-- OLD GALLERY -->
-<div class="product-gallery">
+<!-- ✅ MOVING FIRST TWO IMAGES -->
+<div class="slider">
+  <div class="slides">
+    <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(15).webp">
+    <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(16).webp">
+  </div>
+</div>
 
-<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(15).webp">
-<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(16).webp">
+<!-- PRODUCT GALLERY -->
+<div class="product-gallery">
 
 <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(10).jpeg">
 <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(11).jpeg">
@@ -176,11 +208,6 @@ footer{
 
 <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(54).jpeg">
 <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(56).jpeg">
-
-</div>
-
-<!-- NEW IMAGES ADDED -->
-<div class="product-gallery">
 
 <img src="https://raw.githubusercontent.com/allroundadvert/DEL-SMILE-KITCHEN-/70a4b25a5231e20b239b35d760e411ddf91b5831/download%20(1).jpeg">
 <img src="https://raw.githubusercontent.com/allroundadvert/DEL-SMILE-KITCHEN-/70a4b25a5231e20b239b35d760e411ddf91b5831/download%20(3).jpeg">
