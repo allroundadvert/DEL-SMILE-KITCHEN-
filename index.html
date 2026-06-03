@@ -51,7 +51,7 @@ header p{
     font-weight:bold;
 }
 
-/* ✅ SLIDER (FIRST TWO IMAGES MOVING LEFT & RIGHT) */
+/* SLIDER */
 .slider{
     width:100%;
     overflow:hidden;
@@ -71,12 +71,8 @@ header p{
 }
 
 @keyframes slideMove{
-    0%{
-        transform:translateX(0%);
-    }
-    100%{
-        transform:translateX(-50%);
-    }
+    0%{ transform:translateX(0%); }
+    100%{ transform:translateX(-50%); }
 }
 
 /* PRODUCT GALLERY */
@@ -146,7 +142,7 @@ textarea{
     resize:none;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .buttons{
     margin-top:20px;
     text-align:center;
@@ -162,6 +158,7 @@ textarea{
     font-weight:bold;
     border:none;
     cursor:pointer;
+    margin:5px;
 }
 
 /* FOOTER */
@@ -186,7 +183,7 @@ footer{
 <p><strong>Address:</strong> Igbagwe Road, Benin City, Edo State, Nigeria</p>
 </header>
 
-<!-- ✅ MOVING FIRST TWO IMAGES -->
+<!-- SLIDER -->
 <div class="slider">
   <div class="slides">
     <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(15).webp">
@@ -194,7 +191,7 @@ footer{
   </div>
 </div>
 
-<!-- PRODUCT GALLERY -->
+<!-- GALLERY -->
 <div class="product-gallery">
 
 <img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(10).jpeg">
@@ -297,10 +294,13 @@ footer{
 
 </div>
 
+<!-- BUTTONS -->
 <div class="buttons">
-<button class="whatsapp-btn" onclick="sendOrder()">
-SEND ORDER ON WHATSAPP
-</button>
+<button class="whatsapp-btn" onclick="sendOrder()">SEND ORDER ON WHATSAPP</button>
+
+<a href="tel:08067515299" class="whatsapp-btn" style="background:#007bff;">
+CALL NOW
+</a>
 </div>
 
 </div>
@@ -331,9 +331,7 @@ function sendOrder(){
     });
 
     let phone = "2348067515299";
-    let url = `https://wa.me/${phone}?text=${message}`;
-
-    window.open(url, "_blank");
+    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 }
 </script>
 
