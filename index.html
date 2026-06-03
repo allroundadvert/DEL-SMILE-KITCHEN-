@@ -17,6 +17,21 @@ body{
     --gold:#d4af37;
 }
 
+/* TOP IMAGE */
+.hero-image{
+    width:100%;
+    border-bottom:3px solid var(--gold);
+}
+
+.hero-image img{
+    width:100%;
+    max-height:320px;
+    object-fit:contain;
+    display:block;
+    background:#111;
+}
+
+/* HEADER */
 header{
     background:linear-gradient(90deg,#111,var(--gold),#111);
     text-align:center;
@@ -36,20 +51,22 @@ header p{
     font-weight:bold;
 }
 
-/* TOP IMAGE ADDED */
-.hero-image{
+/* PRODUCT IMAGES */
+.product-gallery{
     width:100%;
-    border-bottom:3px solid var(--gold);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0;
 }
 
-.hero-image img{
+.product-gallery img{
     width:100%;
-    max-height:320px;
-    object-fit:contain;
+    height:200px;
+    object-fit:cover;
     display:block;
-    background:#111;
 }
 
+/* CONTAINER */
 .container{
     width:95%;
     max-width:1000px;
@@ -65,34 +82,35 @@ h2{
     color:var(--gold);
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
+/* PRODUCTS GRID */
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-table,th,td{
+.product-item{
     border:1px solid var(--gold);
-}
-
-th{
-    background:var(--gold);
-    color:#111;
-    padding:12px;
-    text-align:left;
-}
-
-td{
     padding:10px;
     background:#111;
+    border-radius:8px;
 }
 
+.product-item label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:var(--gold);
+}
+
+/* INPUTS */
 input, textarea{
+    width:100%;
     padding:6px;
+    margin-top:5px;
     background:#000;
     border:1px solid var(--gold);
     color:#fff;
-    width:100%;
     box-sizing:border-box;
 }
 
@@ -101,6 +119,7 @@ textarea{
     resize:none;
 }
 
+/* BUTTON */
 .buttons{
     margin-top:20px;
     text-align:center;
@@ -118,6 +137,7 @@ textarea{
     cursor:pointer;
 }
 
+/* FOOTER */
 footer{
     text-align:center;
     padding:20px;
@@ -128,9 +148,9 @@ footer{
 
 <body>
 
-<!-- TOP HEADER IMAGE (ADDED) -->
+<!-- TOP IMAGE -->
 <div class="hero-image">
-    <img src="https://raw.githubusercontent.com/allroundadvert/DEL-SMILE-KITCHEN-/326ef3ad19325c5bc44c30cc276dd6c28c4e33fc/1780490815769.png">
+<img src="https://raw.githubusercontent.com/allroundadvert/DEL-SMILE-KITCHEN-/326ef3ad19325c5bc44c30cc276dd6c28c4e33fc/1780490815769.png">
 </div>
 
 <header>
@@ -139,94 +159,140 @@ footer{
 <p><strong>Address:</strong> Igbagwe Road, Benin City, Edo State, Nigeria</p>
 </header>
 
+<!-- PRODUCT GALLERY (2 PER ROW) -->
+<div class="product-gallery">
+
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(15).webp">
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/download%20(16).webp">
+
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(10).jpeg">
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(11).jpeg">
+
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(12).jpeg">
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(13).jpeg">
+
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(14).jpeg">
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(15).jpeg">
+
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(54).jpeg">
+<img src="https://raw.githubusercontent.com/allroundadvert/Amaobi-kitchen-households-and-electronics-/da9a9cdc289ebcdca4a0d118b07e73954d66c703/images%20(56).jpeg">
+
+</div>
+
+<!-- ORDER SECTION -->
 <div class="container">
 
 <h2>Order Form</h2>
 
-<table>
+<div class="products-grid">
 
-<tr>
-<th>Pots</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Pots</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec" placeholder="Specifications (size, type, etc)"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Blenders</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Blenders</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Back to School</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Back to School</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Luxury Bags</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Luxury Bags</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Shoes</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Shoes</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Solar Fans</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Solar Fans</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Nonstick Pots</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Nonstick Pots</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Gold Spoon</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Gold Spoon</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Children Bag</th>
-<td>
-<input type="checkbox" class="item">
+<div class="product-item">
+<label><input type="checkbox" class="item"> Children Bag</label>
 <input type="number" class="qty" placeholder="Qty">
-<textarea class="spec"></textarea>
-</td>
-</tr>
+<textarea placeholder="Specifications"></textarea>
+</div>
 
-<tr>
-<th>Hair Clippers</th>
-<td>
-<input type="checkbox
+<div class="product-item">
+<label><input type="checkbox" class="item"> Hair Clippers</label>
+<input type="number" class="qty" placeholder="Qty">
+<textarea placeholder="Specifications"></textarea>
+</div>
+
+<div class="product-item">
+<label><input type="checkbox" class="item"> Kettle</label>
+<input type="number" class="qty" placeholder="Qty">
+<textarea placeholder="Specifications"></textarea>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="whatsapp-btn" onclick="sendOrder()">
+SEND ORDER ON WHATSAPP
+</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 Del Smiles Kitchen & Varieties
+</footer>
+
+<script>
+function sendOrder(){
+
+    let rows = document.querySelectorAll(".product-item");
+    let message = "🛒 *NEW ORDER - DEL SMILES KITCHEN & VARIETIES*%0A%0A";
+
+    rows.forEach(row => {
+        let item = row.querySelector(".item");
+        let qty = row.querySelector(".qty");
+        let spec = row.querySelector("textarea");
+        let name = row.querySelector("label");
+
+        if(item && item.checked){
+            let itemName = name.innerText.trim();
+            let quantity = qty.value || "1";
+            let specValue = spec.value || "No specification";
+
+            message += `✔ ${itemName}%0AQty: ${quantity}%0ASpec: ${specValue}%0A%0A`;
+        }
+    });
+
+    let phone = "2348067515299";
+    let url = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
