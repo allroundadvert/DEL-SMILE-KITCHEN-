@@ -3,265 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sales Record App</title>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0a7cff">
-
-<!-- ✅ Firebase (WORKING VERSION) -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
-<!-- Chart -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Del Smiles Kitchen & Varieties</title>
 
 <style>
-body { font-family: Arial; margin: 0; background:#f4f4f4; }
-
-header {
-    background:#0a7cff;
-    color:white;
-    text-align:center;
-    padding:15px;
-    font-size:20px;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111;
+    color:#fff;
 }
 
-.container { padding:15px; }
+:root{
+    --gold:#d4af37;
+}
 
-input, button {
+header{
+    background:linear-gradient(90deg,#111,var(--gold),#111);
+    text-align:center;
+    padding:25px 15px;
+}
+
+header h1{
+    margin:0;
+    color:#111;
+    font-size:28px;
+    font-weight:900;
+}
+
+header p{
+    margin:6px 0;
+    color:#111;
+    font-weight:bold;
+}
+
+.container{
+    width:95%;
+    max-width:1000px;
+    margin:25px auto;
+    background:#1a1a1a;
+    border:1px solid var(--gold);
+    border-radius:10px;
+    padding:20px;
+}
+
+h2{
+    text-align:center;
+    color:var(--gold);
+}
+
+table{
     width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table,th,td{
+    border:1px solid var(--gold);
+}
+
+th{
+    background:var(--gold);
+    color:#111;
+    padding:12px;
+    text-align:left;
+}
+
+td{
     padding:10px;
-    margin:5px 0;
-    border-radius:5px;
-    border:1px solid #ccc;
+    background:#111;
 }
 
-button {
-    background:green;
-    color:white;
-    border:none;
-    font-size:15px;
-}
-
-table {
+input, textarea{
+    padding:6px;
+    background:#000;
+    border:1px solid var(--gold);
+    color:#fff;
     width:100%;
-    background:white;
-    margin-top:10px;
-    border-collapse: collapse;
+    box-sizing:border-box;
 }
 
-th, td {
-    padding:8px;
-    border-bottom:1px solid #ddd;
-    text-align:center;
+textarea{
+    height:60px;
+    resize:none;
 }
 
-th { background:#0a7cff; color:white; }
-
-.delete-btn { background:red; color:white; border:none; padding:5px; }
-
-.logout-btn { background:black; margin-top:10px; }
-
-canvas {
+/* BUTTON */
+.buttons{
     margin-top:20px;
-    background:white;
-    padding:10px;
+    text-align:center;
+}
+
+.whatsapp-btn{
+    display:inline-block;
+    background:#25d366;
+    color:#fff;
+    padding:12px 20px;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#999;
 }
 </style>
 </head>
 
 <body>
 
-<header>SALES RECORD APP</header>
+<header>
+<h1>DEL SMILES KITCHEN & VARIETIES</h1>
+<p>Specialized in all kinds of kitchen utensils and household items</p>
+<p><strong>Address:</strong> Igbagwe Road, Benin City, Edo State, Nigeria</p>
+</header>
 
 <div class="container">
 
-<!-- 🔐 AUTH -->
-<div id="auth">
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
-<button onclick="register()">Register</button>
-<button onclick="login()">Login</button>
-</div>
-
-<!-- 📊 APP -->
-<div id="app" style="display:none;">
-
-<button class="logout-btn" onclick="logout()">Logout</button>
-
-<input type="text" id="product" placeholder="Product Name">
-<input type="number" id="amount" placeholder="Amount (₦)">
-<input type="date" id="date">
-
-<button onclick="addSale()">Add Sale</button>
-<button onclick="exportExcel()">Export Excel</button>
+<h2>Order Form</h2>
 
 <table>
-<thead>
+
 <tr>
-<th>Product</th>
-<th>Amount</th>
-<th>Date</th>
-<th>Time</th>
-<th>Action</th>
+<th>Pots</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec" placeholder="Specifications (size, type, etc)"></textarea>
+</td>
 </tr>
-</thead>
-<tbody id="table"></tbody>
+
+<tr>
+<th>Blenders</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Back to School</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Luxury Bags</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Shoes</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Solar Fans</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Nonstick Pots</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Gold Spoon</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Children Bag</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Hair Clippers</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
+<tr>
+<th>Kettle</th>
+<td>
+<input type="checkbox" class="item">
+<input type="number" class="qty" placeholder="Qty">
+<textarea class="spec"></textarea>
+</td>
+</tr>
+
 </table>
 
-<canvas id="chart"></canvas>
-
+<div class="buttons">
+<button class="whatsapp-btn" onclick="sendOrder()">
+SEND ORDER ON WHATSAPP
+</button>
 </div>
 
 </div>
+
+<footer>
+© 2026 Del Smiles Kitchen & Varieties
+</footer>
 
 <script>
-// 🔥 PUT YOUR REAL FIREBASE CONFIG HERE
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
-};
+function sendOrder(){
 
-// INIT
-firebase.initializeApp(firebaseConfig);
+    let rows = document.querySelectorAll("table tr");
+    let message = "🛒 *NEW ORDER - DEL SMILES KITCHEN & VARIETIES*%0A%0A";
 
-const auth = firebase.auth();
-const db = firebase.firestore();
+    rows.forEach(row => {
+        let item = row.querySelector(".item");
+        let qty = row.querySelector(".qty");
+        let spec = row.querySelector(".spec");
+        let name = row.querySelector("th");
 
-const authDiv = document.getElementById("auth");
-const appDiv = document.getElementById("app");
+        if(item && item.checked){
+            let itemName = name.innerText;
+            let quantity = qty.value || "1";
+            let specValue = spec.value || "No specification";
 
-let userId = null;
-
-// REGISTER
-function register() {
-    auth.createUserWithEmailAndPassword(email.value, password.value)
-    .then(()=> alert("Registered successfully"))
-    .catch(e => alert(e.message));
-}
-
-// LOGIN
-function login() {
-    auth.signInWithEmailAndPassword(email.value, password.value)
-    .then(()=> alert("Login successful"))
-    .catch(e => alert(e.message));
-}
-
-// LOGOUT
-function logout() {
-    auth.signOut();
-}
-
-// AUTH STATE
-auth.onAuthStateChanged(user => {
-    if (user) {
-        userId = user.uid;
-        authDiv.style.display = "none";
-        appDiv.style.display = "block";
-        loadSales();
-    } else {
-        authDiv.style.display = "block";
-        appDiv.style.display = "none";
-    }
-});
-
-// ADD SALE
-function addSale() {
-    if (!product.value || !amount.value || !date.value) {
-        alert("Fill all fields");
-        return;
-    }
-
-    db.collection("sales").add({
-        product: product.value,
-        amount: Number(amount.value),
-        date: date.value,
-        time: new Date().toLocaleTimeString(),
-        userId: userId
-    });
-
-    product.value = "";
-    amount.value = "";
-    date.value = "";
-}
-
-// LOAD SALES
-function loadSales() {
-    db.collection("sales")
-    .where("userId","==",userId)
-    .onSnapshot(snapshot => {
-
-        table.innerHTML = "";
-        let totals = {};
-
-        snapshot.forEach(doc => {
-            let s = doc.data();
-
-            table.innerHTML += `
-            <tr>
-                <td>${s.product}</td>
-                <td>₦${s.amount}</td>
-                <td>${s.date}</td>
-                <td>${s.time}</td>
-                <td><button class="delete-btn" onclick="del('${doc.id}')">X</button></td>
-            </tr>`;
-
-            totals[s.date] = (totals[s.date] || 0) + s.amount;
-        });
-
-        drawChart(totals);
-    });
-}
-
-// DELETE
-function del(id) {
-    db.collection("sales").doc(id).delete();
-}
-
-// CHART
-let chart;
-function drawChart(data) {
-    if(chart) chart.destroy();
-
-    chart = new Chart(document.getElementById("chart"), {
-        type: "bar",
-        data: {
-            labels: Object.keys(data),
-            datasets: [{
-                label: "Daily Sales",
-                data: Object.values(data)
-            }]
-        }
-    });
-}
-
-// EXPORT CSV
-function exportExcel() {
-    let csv = "Product,Amount,Date,Time\n";
-
-    document.querySelectorAll("#table tr").forEach(row => {
-        let cols = row.querySelectorAll("td");
-        if(cols.length){
-            csv += `${cols[0].innerText},${cols[1].innerText},${cols[2].innerText},${cols[3].innerText}\n`;
+            message += `✔ ${itemName}%0AQty: ${quantity}%0ASpec: ${specValue}%0A%0A`;
         }
     });
 
-    let blob = new Blob([csv], {type:"text/csv"});
-    let a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "sales.csv";
-    a.click();
-}
+    let phone = "2348067515299";
+    let url = `https://wa.me/${phone}?text=${message}`;
 
-// PWA
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
+    window.open(url, "_blank");
 }
 </script>
 
